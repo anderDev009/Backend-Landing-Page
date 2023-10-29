@@ -1,18 +1,11 @@
-import { BaseEntity, Column, PrimaryColumn } from "typeorm";
-import { UUID } from "typeorm/driver/mongodb/bson.typings.js";
+import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
+@Entity({name:"user_"})
 export class User extends BaseEntity {
-    @PrimaryColumn()
-    id: UUID;
-    @Column()
-    username: String;
-    @Column()   
-    pass: String;
-
-    constructor(id: UUID, username: string, pass: string) {
-        super();
-        this.id = id;
-        this.username = username;
-        this.pass = pass;
-    }
+    @PrimaryGeneratedColumn()
+    id: number;
+    @Column({name:"username"})
+    username: string;
+    @Column({name:"pass"})   
+    pass: string;
 }

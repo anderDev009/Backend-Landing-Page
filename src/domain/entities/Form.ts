@@ -1,20 +1,14 @@
-import { Collection, Column, PrimaryColumn } from "typeorm";
-import { UUID } from "typeorm/driver/mongodb/bson.typings.js";
+import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
-export class Form{
-    @PrimaryColumn()
-    id : UUID;
-    @Column()
-    f_name : String;
-    @Column()
-    s_name : String;
-    @Column()
-    message : Text;
+@Entity()
+export class Form extends BaseEntity {
+    @PrimaryGeneratedColumn()
+    id: number;
+    @Column({ name: "f_name" })
+    f_name: string;
+    @Column({ name: "s_name" })
+    s_name: string;
+    @Column({ name: "message" })
+    message: string;
 
-    constructor(id:UUID,f_name:String,s_name:String,message:Text){
-        this.id = id;
-        this.f_name = f_name;
-        this.s_name = s_name;
-        this.message = message;
-    }
 }
